@@ -3,12 +3,55 @@
  */
 package comp5590.software.dev;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
-    }
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+public class App {
+	private JFrame frame;
+	private JLabel label;
+	private JTextField textField;
+	private JButton button;
+	private int counter = 1;
+	
+	public static void main(String[] args) {
+		App ui = new App();
+		ui.setupInterface();
+	}
+	
+	private void setupInterface() {
+		frame = new JFrame("User Interface Demo");
+		frame.setSize(400, 200);
+		frame.setLayout(new GridBagLayout());
+		
+		GridBagConstraints constraint = new GridBagConstraints();
+		constraint.gridx = 0;
+		constraint.gridy = 0;
+
+		label = new JLabel("Pick a number");
+		frame.add(label, constraint);
+		
+		constraint.gridx = 1;
+		textField = new JTextField(5);
+		frame.add(textField, constraint);
+		
+		constraint.gridx = 2;
+		button = new JButton("Enter");
+		frame.add(button, constraint);
+		
+		button.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				System.out.println("Button clicked (" + counter++ + ")");
+				System.out.println("Number is " + textField.getText());
+			}
+		});
+		
+		frame.setVisible(true);
+	}
 }
