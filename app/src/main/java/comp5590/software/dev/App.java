@@ -25,7 +25,7 @@ public class App {
 	}
 	
 	private void setupInterface() {
-		frame = new JFrame("User Interface Demo");
+		frame = new JFrame("User Demo");
 		frame.setSize(400, 200);
 		frame.setLayout(new GridBagLayout());
 		
